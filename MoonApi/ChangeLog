@@ -1,0 +1,78 @@
+#2014-04-09 jm 初始化
+
+create database moon;
+use moon;
+
+CREATE TABLE `moon_goods` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL DEFAULT '' COMMENT '物品名称',
+  `money` float NOT NULL DEFAULT '0' COMMENT '物品价格，以分为单位',
+  `category` int(2) NOT NULL DEFAULT '0' COMMENT '物品类别',
+  `description` text NOT NULL COMMENT '物品描述',
+  `default_value` int(11) NOT NULL COMMENT '用户初始化默认值',
+  `created_time` int(11) NOT NULL DEFAULT '0',
+  `updated_time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `moon_user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '玩家名称',
+  `channel_number` varchar(10) NOT NULL DEFAULT '0' COMMENT '渠道编号',
+  `uid` int(64) NOT NULL DEFAULT '0' COMMENT '渠道用户uid',
+  `created_time` int(11) NOT NULL DEFAULT '0',
+  `updated_time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `moon_user_goods` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '物品id',
+  `available` int(11) NOT NULL DEFAULT '0' COMMENT '可用个数',
+  `total` int(11) NOT NULL DEFAULT '0' COMMENT '总个数',
+  `created_time` int(11) NOT NULL DEFAULT '0',
+  `updated_time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `moon_login_info` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `client_login_info` text NOT NULL COMMENT '客户端请求登录信息',
+  `server_login_info` text NOT NULL COMMENT '服务端请求统一登录验证信息',
+  `anysdk_return_info` varchar(1024) NOT NULL COMMENT 'anysdk统一登录验证返回信息',
+  `created_time` int(11) NOT NULL,
+  `updated_time` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `moon_pay_notify` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(255) NOT NULL DEFAULT '' COMMENT '订单号',
+  `app_order_id` varchar(255) DEFAULT '' COMMENT '开发者订单号',
+  `channel_number` varchar(20) NOT NULL DEFAULT '' COMMENT '渠道编号',
+  `order_type` varchar(10) NOT NULL DEFAULT '' COMMENT '支付方式',
+  `user_id` varchar(64) NOT NULL DEFAULT '' COMMENT '渠道用户id',
+  `game_user_id` varchar(64) NOT NULL DEFAULT '0' COMMENT '游戏用户id',
+  `game_id` varchar(10) DEFAULT NULL COMMENT '游戏id',
+  `server_id` varchar(10) DEFAULT NULL COMMENT '服务器id',
+  `world_id` varchar(10) DEFAULT NULL COMMENT '区id',
+  `product_id` varchar(11) NOT NULL DEFAULT '0' COMMENT '物品id',
+  `product_name` varchar(64) DEFAULT NULL COMMENT '物品名称',
+  `product_count` varchar(11) NOT NULL DEFAULT '0' COMMENT '物品个数',
+  `amount` varchar(11) DEFAULT NULL COMMENT '金额',
+  `pay_status` varchar(1) DEFAULT NULL COMMENT '支付状态 成功1 默认只有成功才通知',
+  `pay_time` varchar(11) DEFAULT NULL COMMENT '支付时间',
+  `private_data` varchar(2048) DEFAULT NULL COMMENT '自定义透传参数',
+  `uapi_key` varchar(64) DEFAULT NULL COMMENT 'uapi_key',
+  `sign` varchar(128) DEFAULT NULL COMMENT '本次通知签名',
+  `created_time` int(11) NOT NULL,
+  `updated_time` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+
