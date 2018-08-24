@@ -33,8 +33,6 @@ CREATE TABLE `moon_user_goods` (
   `3user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `4user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '物品id',
-  `available` int(11) NOT NULL DEFAULT '0' COMMENT '可用个数',
-  `total` int(11) NOT NULL DEFAULT '0' COMMENT '总个数',
   `created_time` int(11) NOT NULL DEFAULT '0',
   `updated_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
