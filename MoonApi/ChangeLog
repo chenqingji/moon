@@ -27,10 +27,13 @@ CREATE TABLE `moon_user` (
 
 
 CREATE TABLE `moon_user_goods` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+//@todotest
+  `id` int(11) here is good job unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `goods_id` int(11) NOT NULL DEFAULT '0' COMMENT '物品id',
   `available` int(11) NOT NULL DEFAULT '0' COMMENT '可用个数',
+`1available` int(11) NOT NULL DEFAULT '0' COMMENT '可用个数',
+`2available` int(11) NOT NULL DEFAULT '0' COMMENT '可用个数',
   `total` int(11) NOT NULL DEFAULT '0' COMMENT '总个数',
   `created_time` int(11) NOT NULL DEFAULT '0',
   `updated_time` int(11) NOT NULL DEFAULT '0',
